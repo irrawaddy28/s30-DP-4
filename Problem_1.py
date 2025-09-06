@@ -24,7 +24,7 @@ matrix[i][j] is '0' or '1'.
 
 Solution:
 1. Brute Force
-We go through every cell and when we hit a '1', we try to expand a square from there. For each expansion, we check the new bottom row and right column to ensure they’re all '1'. We keep track of the largest square we can build and return its area.
+We go through every cell and when we hit a '1', we try to expand a square from there. For each expansion, we check the new bottom row and right column to ensure they're all '1'. We keep track of the largest square we can build and return its area.
 https://youtu.be/C-wjwRek6K0?t=236
 Time: O((MN)^2), Space: O(1)
 
@@ -125,6 +125,11 @@ def run_maximalSquare():
                 ["1","0","1","1","1"]], 9),
               ([["0","1"],["1","0"]], 1),
               ([["0"]], 0),
+              ([["1","1","1","1","0"],
+                ["1","1","1","1","0"],
+                ["1","1","1","1","1"],
+                ["1","1","1","1","1"],
+                ["0","0","1","1","1"]], 16), # for all other cases, dp[i][j] = diag + 1 will work. For this case, diag + 1 doesn't work. This case tells why the logic 'min(top, diag, left) + 1' is correct instead of 'daig + 1'
     ]
     for test in tests:
         matrix, ans = test[0], test[1]
